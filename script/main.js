@@ -41,7 +41,7 @@ function handleEnd(e) {
 }
 
 function runTheseFunctionsAfterScrollOrSwipe() {
-    orientRobby(), checkRobbyJumpFallSwim(), moveLayers(), shiftUpDownHorizontalLayers(), animateInformationAndEnemiesElements(), animateRobbyRunSwim(), hideScrollOrSwipeTextContainer(), hideContactConfirmationContainer(), deviceFunctionScrollSwipe(), printScrollSwipeText()
+    orientAlfonso(), checkAlfonsoJumpFallSwim(), moveLayers(), shiftUpDownHorizontalLayers(), animateInformationAndEnemiesElements(), animateAlfonsoRunSwim(), hideScrollOrSwipeTextContainer(), hideContactConfirmationContainer(), deviceFunctionScrollSwipe(), printScrollSwipeText()
 }
 
 function deviceFunctionScrollSwipe() {
@@ -59,13 +59,13 @@ function shiftUpHorizontalLayersAfterEverythingLoaded() {
 }
 
 function finishShiftUpHorizontalLayersAfterEverythingLoaded() {
-    1 == canFinishShiftUpHorizontalLayersAfterEverythingLoaded && (isPreloadShiftUpAnimationFinish = !(canFinishShiftUpHorizontalLayersAfterEverythingLoaded = !1), makePageScrollable(), shiftDownRobbyContainer(), animateScrollOrSwipeTextContainer())
+    1 == canFinishShiftUpHorizontalLayersAfterEverythingLoaded && (isPreloadShiftUpAnimationFinish = !(canFinishShiftUpHorizontalLayersAfterEverythingLoaded = !1), makePageScrollable(), shiftDownAlfonsoContainer(), animateScrollOrSwipeTextContainer())
 }
 
-function shiftDownRobbyContainer() {
-    setRobbyJumpDownAndFallFrame(), $(robbyContainerDiv).stop().animate({bottom: "20%"}, 500, function () {
-        setRobbyStaticFrame(), enableAnimateRobbyRunSwim()
-    }), "internet explorer" == browserName && browserVersion <= 8 && enableAnimateRobbyRunSwim()
+function shiftDownAlfonsoContainer() {
+    setAlfonsoJumpDownAndFallFrame(), $(alfonsoContainerDiv).stop().animate({bottom: "20%"}, 500, function () {
+        setAlfonsoStaticFrame(), enableAnimateAlfonsoRunSwim()
+    }), "internet explorer" == browserName && browserVersion <= 8 && enableAnimateAlfonsoRunSwim()
 }
 
 function makePageScrollable() {
@@ -81,7 +81,7 @@ function setBannersContainerVerticalPosition() {
 }
 
 function setPageHeight() {
-    pageDiv.style.height = layerHorizontalArray[layerHorizontalArray.length - 1].offsetWidth - containerDiv.offsetWidth + layerVerticalArray[layerVerticalArray.length - 1].offsetHeight + distanceBetweenRobbyAndBalloon + "px"
+    pageDiv.style.height = layerHorizontalArray[layerHorizontalArray.length - 1].offsetWidth - containerDiv.offsetWidth + layerVerticalArray[layerVerticalArray.length - 1].offsetHeight + distanceBetweenAlfonsoAndBalloon + "px"
 }
 
 function setLayerSpeed() {
@@ -104,13 +104,13 @@ function detectPageVerticalPosition() {
 function moveLayers() {
     if (setLayersMovement(), "horizontal" == layersMovement) {
         for (var e = 0; e < layerHorizontalArray.length; e++) layerHorizontalArray[e].style.left = -1 * layerHorizontalSpeedArray[e] * pageVerticalPosition + "px";
-        positionLayerHorizontalToBottom(), clearHappyRobbyTimer(), positionVerticalLayersHorizontally()
+        positionLayerHorizontalToBottom(), clearHappyAlfonsoTimer(), positionVerticalLayersHorizontally()
     }
     if ("vertical" == layersMovement) {
         for (e = 0; e < layerVerticalArray.length; e++) layerVerticalArray[e].style.bottom = -1 * layerVerticalSpeedArray[e] * (pageVerticalPosition - (layerHorizontalArray[layerHorizontalArray.length - 1].offsetWidth - containerDiv.offsetWidth)) + "px";
-        positionVerticalLayersAtLeftMost(), positionHorizontalLayersToHaveSameRightPosition(), positionHorizontalLayersVertically(), clearShiftRobbyFrameTimer(), clearHappyRobbyTimer()
+        positionVerticalLayersAtLeftMost(), positionHorizontalLayersToHaveSameRightPosition(), positionHorizontalLayersVertically(), clearShiftAlfonsoFrameTimer(), clearHappyAlfonsoTimer()
     }
-    "not moving 1" == layersMovement && (positionVerticalLayersAtLeftMost(), positionVerticalLayersToHaveSameTopPosition(), positionHorizontalLayersAtBottomMost(), positionHorizontalLayersToHaveSameRightPosition(), clearHappyRobbyTimer()), "not moving 2" == layersMovement && (positionVerticalLayersAtLeftMost(), positionVerticalLayersToHaveSameTopPosition(), positionHorizontalLayersAtBottomMost(), positionHorizontalLayersToHaveSameRightPosition(), animateSocialContainer(), happyRobby(), drawManyFireworks()), positionBalloonAndRobbyContainerHorizontally(), positionContactContainer(), positionFireworksContainer()
+    "not moving 1" == layersMovement && (positionVerticalLayersAtLeftMost(), positionVerticalLayersToHaveSameTopPosition(), positionHorizontalLayersAtBottomMost(), positionHorizontalLayersToHaveSameRightPosition(), clearHappyAlfonsoTimer()), "not moving 2" == layersMovement && (positionVerticalLayersAtLeftMost(), positionVerticalLayersToHaveSameTopPosition(), positionHorizontalLayersAtBottomMost(), positionHorizontalLayersToHaveSameRightPosition(), animateSocialContainer(), happyAlfonso(), drawManyFireworks()), positionBalloonAndAlfonsoContainerHorizontally(), positionContactContainer(), positionFireworksContainer()
 }
 
 function positionVerticalLayersAtLeftMost() {
@@ -129,8 +129,8 @@ function positionHorizontalLayersAtBottomMost() {
     for (var e = 0; e < layerHorizontalArray.length; e++) layerHorizontalArray[e].style.top = layerVerticalArray[layerVerticalArray.length - 1].offsetHeight - containerDiv.offsetHeight + "px"
 }
 
-function setRobbyLeftAndRightEdge() {
-    robbyRightEdge = .5 * (containerDiv.offsetWidth + robbyDiv.offsetWidth) - 65, robbyLeftEdge = .5 * (containerDiv.offsetWidth - robbyDiv.offsetWidth) + 65
+function setAlfonsoLeftAndRightEdge() {
+    alfonsoRightEdge = .5 * (containerDiv.offsetWidth + alfonsoDiv.offsetWidth) - 65, alfonsoLeftEdge = .5 * (containerDiv.offsetWidth - alfonsoDiv.offsetWidth) + 65
 }
 
 function positionVerticalLayersToHaveSameTopPosition() {
@@ -142,11 +142,11 @@ function positionVerticalLayersBottomToHorizontalLayersBottom() {
 }
 
 function shiftUpDownHorizontalLayers() {
-    (previousPageVerticalPosition < sea1Div.offsetLeft - robbyLeftEdge || previousPageVerticalPosition > sea1Div.offsetLeft + sea1Div.offsetWidth - robbyRightEdge) && pageVerticalPosition >= sea1Div.offsetLeft - robbyLeftEdge && pageVerticalPosition <= sea1Div.offsetLeft + sea1Div.offsetWidth - robbyRightEdge && (isRobbySwimming = !0, shiftUpLayerHorizontal(), shiftRobbyToSeaFloor(), createBubble()), previousPageVerticalPosition >= sea1Div.offsetLeft - robbyLeftEdge && previousPageVerticalPosition <= sea1Div.offsetLeft + sea1Div.offsetWidth - robbyRightEdge && (pageVerticalPosition < sea1Div.offsetLeft - robbyLeftEdge || pageVerticalPosition > sea1Div.offsetLeft + sea1Div.offsetWidth - robbyRightEdge) && (isRobbySwimming = !1, shiftDownLayerHorizontal(), shiftRobbyToGroundLevel(), clearInterval(bubbleTimer), clearInterval(blinkSeaAnimalsTimer))
+    (previousPageVerticalPosition < sea1Div.offsetLeft - alfonsoLeftEdge || previousPageVerticalPosition > sea1Div.offsetLeft + sea1Div.offsetWidth - alfonsoRightEdge) && pageVerticalPosition >= sea1Div.offsetLeft - alfonsoLeftEdge && pageVerticalPosition <= sea1Div.offsetLeft + sea1Div.offsetWidth - alfonsoRightEdge && (isAlfonsoSwimming = !0, shiftUpLayerHorizontal(), shiftAlfonsoToSeaFloor(), createBubble()), previousPageVerticalPosition >= sea1Div.offsetLeft - alfonsoLeftEdge && previousPageVerticalPosition <= sea1Div.offsetLeft + sea1Div.offsetWidth - alfonsoRightEdge && (pageVerticalPosition < sea1Div.offsetLeft - alfonsoLeftEdge || pageVerticalPosition > sea1Div.offsetLeft + sea1Div.offsetWidth - alfonsoRightEdge) && (isAlfonsoSwimming = !1, shiftDownLayerHorizontal(), shiftAlfonsoToGroundLevel(), clearInterval(bubbleTimer), clearInterval(blinkSeaAnimalsTimer))
 }
 
 function shiftUpDownHorizontalLayersOnResize() {
-    pageVerticalPosition >= sea1Div.offsetLeft - robbyLeftEdge && pageVerticalPosition <= sea1Div.offsetLeft + sea1Div.offsetWidth - robbyRightEdge && (clearInterval(shiftUpLayerHorizontalTimer), clearInterval(shiftDownLayerHorizontalTimer), isRobbySwimming = !0, positionLayerHorizontalToTop(), positionVerticalLayersBottomToHorizontalLayersBottom(), createBubble()), (pageVerticalPosition < sea1Div.offsetLeft - robbyLeftEdge || pageVerticalPosition > sea1Div.offsetLeft + sea1Div.offsetWidth - robbyRightEdge) && (clearInterval(shiftUpLayerHorizontalTimer), clearInterval(shiftDownLayerHorizontalTimer), isRobbySwimming = !1, "horizontal" == layersMovement ? (positionLayerHorizontalToBottom(), positionVerticalLayersBottomToHorizontalLayersBottom()) : (positionHorizontalLayersAtBottomMost(), positionHorizontalLayersToHaveSameRightPosition()), clearInterval(bubbleTimer), clearInterval(blinkSeaAnimalsTimer))
+    pageVerticalPosition >= sea1Div.offsetLeft - alfonsoLeftEdge && pageVerticalPosition <= sea1Div.offsetLeft + sea1Div.offsetWidth - alfonsoRightEdge && (clearInterval(shiftUpLayerHorizontalTimer), clearInterval(shiftDownLayerHorizontalTimer), isAlfonsoSwimming = !0, positionLayerHorizontalToTop(), positionVerticalLayersBottomToHorizontalLayersBottom(), createBubble()), (pageVerticalPosition < sea1Div.offsetLeft - alfonsoLeftEdge || pageVerticalPosition > sea1Div.offsetLeft + sea1Div.offsetWidth - alfonsoRightEdge) && (clearInterval(shiftUpLayerHorizontalTimer), clearInterval(shiftDownLayerHorizontalTimer), isAlfonsoSwimming = !1, "horizontal" == layersMovement ? (positionLayerHorizontalToBottom(), positionVerticalLayersBottomToHorizontalLayersBottom()) : (positionHorizontalLayersAtBottomMost(), positionHorizontalLayersToHaveSameRightPosition()), clearInterval(bubbleTimer), clearInterval(blinkSeaAnimalsTimer))
 }
 
 function setShiftUpLayerHorizontalDistance() {
@@ -156,17 +156,17 @@ function setShiftUpLayerHorizontalDistance() {
 function shiftUpLayerHorizontal() {
     setShiftUpLayerHorizontalDistance(), clearShiftUpDownLayerHorizontalTimer(), shiftUpLayerHorizontalTimer = setInterval(function () {
         moveUpLayerHorizontal()
-    }, shiftUpDownLayerHorizontalInterval), disableIsRobbyJumpingAndFalling()
+    }, shiftUpDownLayerHorizontalInterval), disableIsAlfonsoJumpingAndFalling()
 }
 
 function moveUpLayerHorizontal() {
     if ("horizontal" == layersMovement) {
         for (var e = 0; e < layerHorizontalArray.length; e++) {
             var t = layerHorizontalArray[e].offsetTop - shiftUpDownLayerHorizontalIncrement;
-            t <= -shiftUpLayerHorizontalDistance ? (t = -shiftUpLayerHorizontalDistance, layerHorizontalArray[e].style.top = t + "px", clearInterval(shiftUpLayerHorizontalTimer)) : layerHorizontalArray[e].style.top = t + "px", robbyContainerDiv.offsetTop > sea1Div.offsetTop + layerHorizontalArray[layerHorizontalArray.length - 1].offsetTop && (isRobbyBelowSeaLevel = !0)
+            t <= -shiftUpLayerHorizontalDistance ? (t = -shiftUpLayerHorizontalDistance, layerHorizontalArray[e].style.top = t + "px", clearInterval(shiftUpLayerHorizontalTimer)) : layerHorizontalArray[e].style.top = t + "px", alfonsoContainerDiv.offsetTop > sea1Div.offsetTop + layerHorizontalArray[layerHorizontalArray.length - 1].offsetTop && (isAlfonsoBelowSeaLevel = !0)
         }
         positionVerticalLayersBottomToHorizontalLayersBottom()
-    } else clearInterval(shiftUpLayerHorizontalTimer), positionHorizontalLayersAtBottomMost(), positionHorizontalLayersToHaveSameRightPosition(), isRobbyBelowSeaLevel = !1
+    } else clearInterval(shiftUpLayerHorizontalTimer), positionHorizontalLayersAtBottomMost(), positionHorizontalLayersToHaveSameRightPosition(), isAlfonsoBelowSeaLevel = !1
 }
 
 function shiftDownLayerHorizontal() {
@@ -179,28 +179,28 @@ function moveDownLayerHorizontal() {
     if ("horizontal" == layersMovement) {
         for (var e = 0; e < layerHorizontalArray.length; e++) {
             var t = layerHorizontalArray[e].offsetTop + shiftUpDownLayerHorizontalIncrement;
-            0 <= t ? (t = 0, layerHorizontalArray[e].style.top = t + "px", clearInterval(shiftDownLayerHorizontalTimer)) : layerHorizontalArray[e].style.top = t + "px", robbyContainerDiv.offsetTop < sea1Div.offsetTop + layerHorizontalArray[layerHorizontalArray.length - 1].offsetTop && (isRobbyBelowSeaLevel = !1)
+            0 <= t ? (t = 0, layerHorizontalArray[e].style.top = t + "px", clearInterval(shiftDownLayerHorizontalTimer)) : layerHorizontalArray[e].style.top = t + "px", alfonsoContainerDiv.offsetTop < sea1Div.offsetTop + layerHorizontalArray[layerHorizontalArray.length - 1].offsetTop && (isAlfonsoBelowSeaLevel = !1)
         }
         positionVerticalLayersBottomToHorizontalLayersBottom()
-    } else clearInterval(shiftDownLayerHorizontalTimer), positionHorizontalLayersAtBottomMost(), positionHorizontalLayersToHaveSameRightPosition(), isRobbyBelowSeaLevel = !1
+    } else clearInterval(shiftDownLayerHorizontalTimer), positionHorizontalLayersAtBottomMost(), positionHorizontalLayersToHaveSameRightPosition(), isAlfonsoBelowSeaLevel = !1
 }
 
 function clearShiftUpDownLayerHorizontalTimer() {
     clearInterval(shiftUpLayerHorizontalTimer), clearInterval(shiftDownLayerHorizontalTimer)
 }
 
-function shiftRobbyToGroundLevel() {
-    $(robbyContainerDiv).stop().animate({bottom: containerDiv.offsetHeight - groundAndGrassContainer1Div.offsetTop + "px"}, 300, function () {
+function shiftAlfonsoToGroundLevel() {
+    $(alfonsoContainerDiv).stop().animate({bottom: containerDiv.offsetHeight - groundAndGrassContainer1Div.offsetTop + "px"}, 300, function () {
     })
 }
 
-function shiftRobbyToSeaFloor() {
-    $(robbyContainerDiv).stop().animate({bottom: seaFloorDiv.offsetHeight + "px"}, 300, function () {
+function shiftAlfonsoToSeaFloor() {
+    $(alfonsoContainerDiv).stop().animate({bottom: seaFloorDiv.offsetHeight + "px"}, 300, function () {
     })
 }
 
 function positionLayerHorizontalToTop() {
-    if (1 == isRobbySwimming) {
+    if (1 == isAlfonsoSwimming) {
         setShiftUpLayerHorizontalDistance();
         for (var e = 0; e < layerHorizontalArray.length; e++) layerHorizontalArray[e].style.top = -shiftUpLayerHorizontalDistance + "px";
         for (e = 0; e < layerVerticalArray.length; e++) layerVerticalArray[e].style.bottom = shiftUpLayerHorizontalDistance + "px"
@@ -208,83 +208,83 @@ function positionLayerHorizontalToTop() {
 }
 
 function positionLayerHorizontalToBottom() {
-    if (0 == isRobbySwimming) {
+    if (0 == isAlfonsoSwimming) {
         for (var e = 0; e < layerHorizontalArray.length; e++) layerHorizontalArray[e].style.top = "0px";
         for (e = 0; e < layerVerticalArray.length; e++) layerVerticalArray[e].style.bottom = "0px"
     }
 }
 
-function checkRobbyJumpFallSwim() {
-    if ("horizontal" == layersMovement) if (1 == isRobbySwimming) 1 == isRobbyBelowSeaLevel && robbySwimUp(); else for (var e = 0; e < elevationArray.length; e++) robbyJumpUp(e), robbyFall(e)
+function checkAlfonsoJumpFallSwim() {
+    if ("horizontal" == layersMovement) if (1 == isAlfonsoSwimming) 1 == isAlfonsoBelowSeaLevel && alfonsoSwimUp(); else for (var e = 0; e < elevationArray.length; e++) alfonsoJumpUp(e), alfonsoFall(e)
 }
 
-function robbyJumpUp(e) {
-    (previousPageVerticalPosition <= elevationArray[e].offsetLeft - robbyRightEdge && pageVerticalPosition > elevationArray[e].offsetLeft - robbyRightEdge || previousPageVerticalPosition >= elevationArray[e].offsetLeft + elevationArray[e].offsetWidth - robbyLeftEdge && pageVerticalPosition < elevationArray[e].offsetLeft + elevationArray[e].offsetWidth - robbyLeftEdge) && (positionRobbyAtGroundLevel(), $(robbyContainerDiv).stop().animate({bottom: [containerDiv.offsetHeight - groundAndGrassContainer1Div.offsetTop + 300, "easeOutCubic"]}, 300, function () {
-        robbyJumpDown(e)
-    }), setRobbyJumpUpFrame())
+function alfonsoJumpUp(e) {
+    (previousPageVerticalPosition <= elevationArray[e].offsetLeft - alfonsoRightEdge && pageVerticalPosition > elevationArray[e].offsetLeft - alfonsoRightEdge || previousPageVerticalPosition >= elevationArray[e].offsetLeft + elevationArray[e].offsetWidth - alfonsoLeftEdge && pageVerticalPosition < elevationArray[e].offsetLeft + elevationArray[e].offsetWidth - alfonsoLeftEdge) && (positionAlfonsoAtGroundLevel(), $(alfonsoContainerDiv).stop().animate({bottom: [containerDiv.offsetHeight - groundAndGrassContainer1Div.offsetTop + 300, "easeOutCubic"]}, 300, function () {
+        alfonsoJumpDown(e)
+    }), setAlfonsoJumpUpFrame())
 }
 
-function robbyJumpDown(e) {
-    pageVerticalPosition > elevationArray[e].offsetLeft - robbyRightEdge && pageVerticalPosition < elevationArray[e].offsetLeft + elevationArray[e].offsetWidth - robbyLeftEdge && ($(robbyContainerDiv).stop().animate({bottom: [containerDiv.offsetHeight - elevationArray[e].offsetTop, "easeInCubic"]}, 300, function () {
-        disableIsRobbyJumpingAndFalling(), setRobbyStaticFrame()
-    }), setRobbyJumpDownAndFallFrame())
+function alfonsoJumpDown(e) {
+    pageVerticalPosition > elevationArray[e].offsetLeft - alfonsoRightEdge && pageVerticalPosition < elevationArray[e].offsetLeft + elevationArray[e].offsetWidth - alfonsoLeftEdge && ($(alfonsoContainerDiv).stop().animate({bottom: [containerDiv.offsetHeight - elevationArray[e].offsetTop, "easeInCubic"]}, 300, function () {
+        disableIsAlfonsoJumpingAndFalling(), setAlfonsoStaticFrame()
+    }), setAlfonsoJumpDownAndFallFrame())
 }
 
-function robbyFall(e) {
-    (previousPageVerticalPosition < elevationArray[e].offsetLeft + elevationArray[e].offsetWidth - robbyLeftEdge && pageVerticalPosition >= elevationArray[e].offsetLeft + elevationArray[e].offsetWidth - robbyLeftEdge || previousPageVerticalPosition > elevationArray[e].offsetLeft - robbyRightEdge && pageVerticalPosition <= elevationArray[e].offsetLeft - robbyRightEdge) && (isRobbyFalling = !0, setRobbyJumpDownAndFallFrame(), $(robbyContainerDiv).stop().animate({bottom: [containerDiv.offsetHeight - groundAndGrassContainer1Div.offsetTop, "easeInCubic"]}, 300, function () {
-        disableIsRobbyJumpingAndFalling(), setRobbyStaticFrame()
+function alfonsoFall(e) {
+    (previousPageVerticalPosition < elevationArray[e].offsetLeft + elevationArray[e].offsetWidth - alfonsoLeftEdge && pageVerticalPosition >= elevationArray[e].offsetLeft + elevationArray[e].offsetWidth - alfonsoLeftEdge || previousPageVerticalPosition > elevationArray[e].offsetLeft - alfonsoRightEdge && pageVerticalPosition <= elevationArray[e].offsetLeft - alfonsoRightEdge) && (isAlfonsoFalling = !0, setAlfonsoJumpDownAndFallFrame(), $(alfonsoContainerDiv).stop().animate({bottom: [containerDiv.offsetHeight - groundAndGrassContainer1Div.offsetTop, "easeInCubic"]}, 300, function () {
+        disableIsAlfonsoJumpingAndFalling(), setAlfonsoStaticFrame()
     }))
 }
 
-function setRobbyJumpUpFrame() {
-    clearShiftRobbyFrameTimer(), isRobbyJumping = !0, robbyFramesDiv.style.left = -1 * robbyStartJumpFrame * robbyOneFrameWidth + "px"
+function setAlfonsoJumpUpFrame() {
+    clearShiftAlfonsoFrameTimer(), isAlfonsoJumping = !0, alfonsoFramesDiv.style.left = -1 * alfonsoStartJumpFrame * alfonsoOneFrameWidth + "px"
 }
 
-function setRobbyJumpDownAndFallFrame() {
-    robbyFramesDiv.style.left = -1 * robbyStopJumpFrame * robbyOneFrameWidth + "px"
+function setAlfonsoJumpDownAndFallFrame() {
+    alfonsoFramesDiv.style.left = -1 * alfonsoStopJumpFrame * alfonsoOneFrameWidth + "px"
 }
 
-function setRobbyStaticFrame() {
-    robbyFramesDiv.style.left = "0px"
+function setAlfonsoStaticFrame() {
+    alfonsoFramesDiv.style.left = "0px"
 }
 
-function disableIsRobbyJumpingAndFalling() {
-    isRobbyFalling = isRobbyJumping = !1
+function disableIsAlfonsoJumpingAndFalling() {
+    isAlfonsoFalling = isAlfonsoJumping = !1
 }
 
-function robbySwimUp() {
+function alfonsoSwimUp() {
     if (getSwimUpHeight(), 0 < swimUpHeight) {
         var e = seaFloorDiv.offsetHeight + swimUpHeight + "px", t = 3 * swimUpHeight, i = 6 * swimUpHeight;
-        $(robbyContainerDiv).stop().animate({bottom: e}, t, function () {
-            robbySwimDown(i)
+        $(alfonsoContainerDiv).stop().animate({bottom: e}, t, function () {
+            alfonsoSwimDown(i)
         })
     }
 }
 
-function robbySwimDown(e) {
-    $(robbyContainerDiv).stop().animate({bottom: seaFloorDiv.offsetHeight + "px"}, e, function () {
-        setRobbyStaticFrame()
-    }), robbyContainerDiv.offsetTop + robbyContainerDiv.offsetHeight <= containerDiv.offsetHeight - seaFloorDiv.offsetHeight - minimumVerticalDistanceToTriggerRobbySwimDownFrame ? robbyFramesDiv.style.left = -1 * robbySwimDownFrame * robbyOneFrameWidth + "px" : setRobbyStaticFrame()
+function alfonsoSwimDown(e) {
+    $(alfonsoContainerDiv).stop().animate({bottom: seaFloorDiv.offsetHeight + "px"}, e, function () {
+        setAlfonsoStaticFrame()
+    }), alfonsoContainerDiv.offsetTop + alfonsoContainerDiv.offsetHeight <= containerDiv.offsetHeight - seaFloorDiv.offsetHeight - minimumVerticalDistanceToTriggerAlfonsoSwimDownFrame ? alfonsoFramesDiv.style.left = -1 * alfonsoSwimDownFrame * alfonsoOneFrameWidth + "px" : setAlfonsoStaticFrame()
 }
 
-function animateRobbyEyes() {
-    clearInterval(blinkRobbyEyesTimer), blinkRobbyEyesTimer = setInterval(function () {
-        blinkRobbyEyes()
+function animateAlfonsoEyes() {
+    clearInterval(blinkAlfonsoEyesTimer), blinkAlfonsoEyesTimer = setInterval(function () {
+        blinkAlfonsoEyes()
     }, 4e3)
 }
 
-function blinkRobbyEyes() {
-    "not moving 2" != layersMovement && ($(robbyEyesCloseDiv).fadeTo(0, 1), $(robbyEyesCloseDiv).stop().delay(300).animate({opacity: 0}, 0, function () {
+function blinkAlfonsoEyes() {
+    "not moving 2" != layersMovement && ($(alfonsoEyesCloseDiv).fadeTo(0, 1), $(alfonsoEyesCloseDiv).stop().delay(300).animate({opacity: 0}, 0, function () {
     }))
 }
 
-function hideRobbyEyesClose() {
-    $(robbyEyesCloseDiv).fadeTo(0, 0)
+function hideAlfonsoEyesClose() {
+    $(alfonsoEyesCloseDiv).fadeTo(0, 0)
 }
 
 function getSwimUpHeight() {
     swimUpHeight = Math.abs(deltaPageVerticalPosition);
-    var e = sea1Div.offsetHeight - robbyDiv.offsetHeight;
+    var e = sea1Div.offsetHeight - alfonsoDiv.offsetHeight;
     e < swimUpHeight && (swimUpHeight = e)
 }
 
@@ -292,13 +292,13 @@ function positionVerticalLayersHorizontally() {
     for (var e = 0; e < layerVerticalArray.length; e++) layerVerticalArray[e].style.left = layerHorizontalArray[e].offsetLeft + layerHorizontalArray[e].offsetWidth - containerDiv.offsetWidth + "px"
 }
 
-function positionBalloonAndRobbyContainerHorizontally() {
+function positionBalloonAndAlfonsoContainerHorizontally() {
     var e = pageVerticalPosition * layerHorizontalSpeedArray[layerHorizontalSpeedArray.length - 1] - (layerHorizontalArray[layerHorizontalArray.length - 1].offsetWidth - containerDiv.offsetWidth);
-    robbyMaxHorizontalDistance = .5 * containerDiv.offsetWidth + 250;
+    alfonsoMaxHorizontalDistance = .5 * containerDiv.offsetWidth + 250;
     var t = .5 * containerDiv.offsetWidth + e;
-    robbyMaxHorizontalDistance <= t && (t = robbyMaxHorizontalDistance);
+    alfonsoMaxHorizontalDistance <= t && (t = alfonsoMaxHorizontalDistance);
     var i = .5 * containerDiv.offsetWidth + 50, n = .5 * (containerDiv.offsetWidth - balloonDiv.offsetWidth) + e;
-    i <= n && (n = i), "vertical" == layersMovement ? (balloonDiv.style.left = n + "px", robbyContainerDiv.style.left = t + "px") : "not moving 1" == layersMovement || "not moving 2" == layersMovement ? (robbyContainerDiv.style.left = t + pageVerticalPosition - (pageDiv.offsetHeight - containerDiv.offsetHeight - distanceBetweenRobbyAndBalloon) + "px", balloonDiv.style.left = n + "px") : (balloonDiv.style.left = layerHorizontalArray[layerHorizontalArray.length - 1].offsetLeft + layerHorizontalArray[layerHorizontalArray.length - 1].offsetWidth - .5 * (containerDiv.offsetWidth + balloonDiv.offsetWidth) + "px", robbyContainerDiv.style.left = "50%")
+    i <= n && (n = i), "vertical" == layersMovement ? (balloonDiv.style.left = n + "px", alfonsoContainerDiv.style.left = t + "px") : "not moving 1" == layersMovement || "not moving 2" == layersMovement ? (alfonsoContainerDiv.style.left = t + pageVerticalPosition - (pageDiv.offsetHeight - containerDiv.offsetHeight - distanceBetweenAlfonsoAndBalloon) + "px", balloonDiv.style.left = n + "px") : (balloonDiv.style.left = layerHorizontalArray[layerHorizontalArray.length - 1].offsetLeft + layerHorizontalArray[layerHorizontalArray.length - 1].offsetWidth - .5 * (containerDiv.offsetWidth + balloonDiv.offsetWidth) + "px", alfonsoContainerDiv.style.left = "50%")
 }
 
 function positionBalloonVertically() {
@@ -306,11 +306,11 @@ function positionBalloonVertically() {
 }
 
 function setLayersMovement() {
-    layersMovement = pageVerticalPosition * layerHorizontalSpeedArray[layerHorizontalSpeedArray.length - 1] <= layerHorizontalArray[layerHorizontalArray.length - 1].offsetWidth - containerDiv.offsetWidth ? "horizontal" : pageVerticalPosition >= pageDiv.offsetHeight - containerDiv.offsetHeight - distanceBetweenRobbyAndBalloon && pageVerticalPosition < pageDiv.offsetHeight - containerDiv.offsetHeight ? "not moving 1" : pageVerticalPosition >= pageDiv.offsetHeight - containerDiv.offsetHeight ? "not moving 2" : "vertical"
+    layersMovement = pageVerticalPosition * layerHorizontalSpeedArray[layerHorizontalSpeedArray.length - 1] <= layerHorizontalArray[layerHorizontalArray.length - 1].offsetWidth - containerDiv.offsetWidth ? "horizontal" : pageVerticalPosition >= pageDiv.offsetHeight - containerDiv.offsetHeight - distanceBetweenAlfonsoAndBalloon && pageVerticalPosition < pageDiv.offsetHeight - containerDiv.offsetHeight ? "not moving 1" : pageVerticalPosition >= pageDiv.offsetHeight - containerDiv.offsetHeight ? "not moving 2" : "vertical"
 }
 
-function orientRobby() {
-    0 < deltaPageVerticalPosition && (robbyFramesDiv.style.top = "0px", robbyEyesCloseDiv.style.left = "90px"), deltaPageVerticalPosition < 0 && (robbyFramesDiv.style.top = "-200px", robbyEyesCloseDiv.style.left = "55px")
+function orientAlfonso() {
+    0 < deltaPageVerticalPosition && (alfonsoFramesDiv.style.top = "0px", alfonsoEyesCloseDiv.style.left = "90px"), deltaPageVerticalPosition < 0 && (alfonsoFramesDiv.style.top = "-200px", alfonsoEyesCloseDiv.style.left = "55px")
 }
 
 function storeDivs() {
@@ -487,31 +487,31 @@ function disableIsSeaAnimalStillAnimating(e) {
     t == fishArray && (fishAnimateNumber >= t.length - 1 ? (isFishStillAnimating = !1, fishAnimateNumber = 0) : fishAnimateNumber += 1), t == crabArray && (crabAnimateNumber >= t.length - 1 ? (isCrabStillAnimating = !1, crabAnimateNumber = 0) : crabAnimateNumber += 1), t == turtleArray && (turtleAnimateNumber >= t.length - 1 ? (isTurtleStillAnimating = !1, turtleAnimateNumber = 0) : turtleAnimateNumber += 1)
 }
 
-function animateRobbyRunSwim() {
-    1 == canAnimateRobbyRunSwim && 0 == isRobbyJumping && 0 == isRobbyFalling && "vertical" != layersMovement && (disableAnimateRobbyRunSwim(), clearInterval(shiftRobbyFrameTimer), shiftRobbyFrameTimer = setInterval(function () {
-        shiftRobbyFrame()
-    }, shiftRobbyFrameTimeInterval))
+function animateAlfonsoRunSwim() {
+    1 == canAnimateAlfonsoRunSwim && 0 == isAlfonsoJumping && 0 == isAlfonsoFalling && "vertical" != layersMovement && (disableAnimateAlfonsoRunSwim(), clearInterval(shiftAlfonsoFrameTimer), shiftAlfonsoFrameTimer = setInterval(function () {
+        shiftAlfonsoFrame()
+    }, shiftAlfonsoFrameTimeInterval))
 }
 
-function shiftRobbyFrame() {
-    if (1 == isRobbyFalling) return clearShiftRobbyFrameTimer(), void setRobbyJumpDownAndFallFrame();
-    if (1 == isRobbySwimming && 1 == isRobbyBelowSeaLevel ? (robbyStartFrame = robbyStartSwimFrame, robbyStopFrame = robbyStopSwimFrame) : (robbyStartFrame = robbyStartRunFrame, robbyStopFrame = robbyStopRunFrame), robbyFramesDiv.style.left = -1 * robbyOneFrameWidth * (robbyStartFrame + counter) + "px", robbyStopFrame < robbyStartFrame + counter + switcher && (switcher *= -1), robbyStartFrame + counter + switcher == robbyStartFrame && (pageVerticalPositionWhenAnimateRobby1 = pageVerticalPosition), robbyStartFrame + counter + switcher < robbyStartFrame) {
-        if (pageVerticalPositionWhenAnimateRobby1 == (pageVerticalPositionWhenAnimateRobby2 = pageVerticalPosition)) return clearShiftRobbyFrameTimer(), void ("not moving 2" == layersMovement && robbyHandsUp());
+function shiftAlfonsoFrame() {
+    if (1 == isAlfonsoFalling) return clearShiftAlfonsoFrameTimer(), void setAlfonsoJumpDownAndFallFrame();
+    if (1 == isAlfonsoSwimming && 1 == isAlfonsoBelowSeaLevel ? (alfonsoStartFrame = alfonsoStartSwimFrame, alfonsoStopFrame = alfonsoStopSwimFrame) : (alfonsoStartFrame = alfonsoStartRunFrame, alfonsoStopFrame = alfonsoStopRunFrame), alfonsoFramesDiv.style.left = -1 * alfonsoOneFrameWidth * (alfonsoStartFrame + counter) + "px", alfonsoStopFrame < alfonsoStartFrame + counter + switcher && (switcher *= -1), alfonsoStartFrame + counter + switcher == alfonsoStartFrame && (pageVerticalPositionWhenAnimateAlfonso1 = pageVerticalPosition), alfonsoStartFrame + counter + switcher < alfonsoStartFrame) {
+        if (pageVerticalPositionWhenAnimateAlfonso1 == (pageVerticalPositionWhenAnimateAlfonso2 = pageVerticalPosition)) return clearShiftAlfonsoFrameTimer(), void ("not moving 2" == layersMovement && alfonsoHandsUp());
         switcher *= -1
     }
     counter += switcher
 }
 
-function clearShiftRobbyFrameTimer() {
-    clearInterval(shiftRobbyFrameTimer), (0 == isRobbySwimming || 1 == isRobbySwimming && robbyContainerDiv.offsetTop + robbyContainerDiv.offsetHeight >= containerDiv.offsetHeight - seaFloorDiv.offsetHeight) && setRobbyStaticFrame(), counter = 0, switcher = 1, enableAnimateRobbyRunSwim()
+function clearShiftAlfonsoFrameTimer() {
+    clearInterval(shiftAlfonsoFrameTimer), (0 == isAlfonsoSwimming || 1 == isAlfonsoSwimming && alfonsoContainerDiv.offsetTop + alfonsoContainerDiv.offsetHeight >= containerDiv.offsetHeight - seaFloorDiv.offsetHeight) && setAlfonsoStaticFrame(), counter = 0, switcher = 1, enableAnimateAlfonsoRunSwim()
 }
 
-function enableAnimateRobbyRunSwim() {
-    canAnimateRobbyRunSwim = !0
+function enableAnimateAlfonsoRunSwim() {
+    canAnimateAlfonsoRunSwim = !0
 }
 
-function disableAnimateRobbyRunSwim() {
-    canAnimateRobbyRunSwim = !1
+function disableAnimateAlfonsoRunSwim() {
+    canAnimateAlfonsoRunSwim = !1
 }
 
 function positionChainBlockAndStringContainer() {
@@ -546,8 +546,8 @@ function positionExperience3Elements() {
 
 function animateInformationAndEnemiesElements() {
     if ("horizontal" == layersMovement) {
-        if (0 == isRobbySwimming) for (var e = 0; e < landInformationContainerArray.length; e++) (previousPageVerticalPosition + .5 * containerDiv.offsetWidth < landInformationContainerArray[e].offsetLeft || previousPageVerticalPosition + .5 * containerDiv.offsetWidth > landInformationContainerArray[e].offsetLeft + landInformationContainerArray[e].offsetWidth) && pageVerticalPosition + .5 * containerDiv.offsetWidth > landInformationContainerArray[e].offsetLeft && pageVerticalPosition + .5 * containerDiv.offsetWidth < landInformationContainerArray[e].offsetLeft + landInformationContainerArray[e].offsetWidth && (landInformationContainerArray[e] == about1ContainerDiv && 1 == canAnimatePlantInformation && (animatePlants(), canAnimatePlantInformation = !1), landInformationContainerArray[e] == about2ContainerDiv && (animateBuildingsEyes(), 1 == canAnimateBuildingInformation && (animateBuildings(), canAnimateBuildingInformation = !1)), landInformationContainerArray[e] == about3ContainerDiv && (animateNbaPlayerEyes(), 1 == canAnimateNbaInformation && (animateNbaPlayer(), canAnimateNbaInformation = !1)), landInformationContainerArray[e] == experience1ContainerDiv && (0 == canAnimateRobotInformation ? animateRobotHands() : (animateRobot(), animateExperienceTextContainer(0), animateChainBlockAndStringContainer(0), canAnimateRobotInformation = !1)), landInformationContainerArray[e] == experience2ContainerDiv && (0 == canAnimateSquidInformation ? animateSquidHands() : (animateSquid(), animateExperienceTextContainer(1), animateChainBlockAndStringContainer(1), canAnimateSquidInformation = !1)), landInformationContainerArray[e] == experience3ContainerDiv && (0 == canAnimateAlienInformation ? animateAlienHand() : (animateAlien(), animateExperienceTextContainer(2), animateChainBlockAndStringContainer(2), canAnimateAlienInformation = !1)));
-        if (1 == isRobbySwimming) for (e = 0; e < seaInformationContainerArray.length; e++) (previousPageVerticalPosition + .5 * containerDiv.offsetWidth < sea1Div.offsetLeft + seaInformationContainerArray[e].offsetLeft || previousPageVerticalPosition + .5 * containerDiv.offsetWidth > sea1Div.offsetLeft + seaInformationContainerArray[e].offsetLeft + seaInformationContainerArray[e].offsetWidth) && pageVerticalPosition + .5 * containerDiv.offsetWidth > sea1Div.offsetLeft + seaInformationContainerArray[e].offsetLeft && pageVerticalPosition + .5 * containerDiv.offsetWidth < sea1Div.offsetLeft + seaInformationContainerArray[e].offsetLeft + seaInformationContainerArray[e].offsetWidth && (seaInformationContainerArray[e] == skill1ContainerDiv && (makeSeaAnimalsBlinking(fishEyeArray), 1 == canAnimateFishInformation && (animateSeaAnimals(fishArray), canAnimateFishInformation = !1)), seaInformationContainerArray[e] == skill2ContainerDiv && (makeSeaAnimalsBlinking(crabEyeArray), 1 == canAnimateCrabInformation && (animateSeaAnimals(crabArray), canAnimateCrabInformation = !1)), seaInformationContainerArray[e] == skill3ContainerDiv && (makeSeaAnimalsBlinking(turtleEyeArray), 1 == canAnimateTurtleInformation && (animateSeaAnimals(turtleArray), canAnimateTurtleInformation = !1)))
+        if (0 == isAlfonsoSwimming) for (var e = 0; e < landInformationContainerArray.length; e++) (previousPageVerticalPosition + .5 * containerDiv.offsetWidth < landInformationContainerArray[e].offsetLeft || previousPageVerticalPosition + .5 * containerDiv.offsetWidth > landInformationContainerArray[e].offsetLeft + landInformationContainerArray[e].offsetWidth) && pageVerticalPosition + .5 * containerDiv.offsetWidth > landInformationContainerArray[e].offsetLeft && pageVerticalPosition + .5 * containerDiv.offsetWidth < landInformationContainerArray[e].offsetLeft + landInformationContainerArray[e].offsetWidth && (landInformationContainerArray[e] == about1ContainerDiv && 1 == canAnimatePlantInformation && (animatePlants(), canAnimatePlantInformation = !1), landInformationContainerArray[e] == about2ContainerDiv && (animateBuildingsEyes(), 1 == canAnimateBuildingInformation && (animateBuildings(), canAnimateBuildingInformation = !1)), landInformationContainerArray[e] == about3ContainerDiv && (animateNbaPlayerEyes(), 1 == canAnimateNbaInformation && (animateNbaPlayer(), canAnimateNbaInformation = !1)), landInformationContainerArray[e] == experience1ContainerDiv && (0 == canAnimateRobotInformation ? animateRobotHands() : (animateRobot(), animateExperienceTextContainer(0), animateChainBlockAndStringContainer(0), canAnimateRobotInformation = !1)), landInformationContainerArray[e] == experience2ContainerDiv && (0 == canAnimateSquidInformation ? animateSquidHands() : (animateSquid(), animateExperienceTextContainer(1), animateChainBlockAndStringContainer(1), canAnimateSquidInformation = !1)), landInformationContainerArray[e] == experience3ContainerDiv && (0 == canAnimateAlienInformation ? animateAlienHand() : (animateAlien(), animateExperienceTextContainer(2), animateChainBlockAndStringContainer(2), canAnimateAlienInformation = !1)));
+        if (1 == isAlfonsoSwimming) for (e = 0; e < seaInformationContainerArray.length; e++) (previousPageVerticalPosition + .5 * containerDiv.offsetWidth < sea1Div.offsetLeft + seaInformationContainerArray[e].offsetLeft || previousPageVerticalPosition + .5 * containerDiv.offsetWidth > sea1Div.offsetLeft + seaInformationContainerArray[e].offsetLeft + seaInformationContainerArray[e].offsetWidth) && pageVerticalPosition + .5 * containerDiv.offsetWidth > sea1Div.offsetLeft + seaInformationContainerArray[e].offsetLeft && pageVerticalPosition + .5 * containerDiv.offsetWidth < sea1Div.offsetLeft + seaInformationContainerArray[e].offsetLeft + seaInformationContainerArray[e].offsetWidth && (seaInformationContainerArray[e] == skill1ContainerDiv && (makeSeaAnimalsBlinking(fishEyeArray), 1 == canAnimateFishInformation && (animateSeaAnimals(fishArray), canAnimateFishInformation = !1)), seaInformationContainerArray[e] == skill2ContainerDiv && (makeSeaAnimalsBlinking(crabEyeArray), 1 == canAnimateCrabInformation && (animateSeaAnimals(crabArray), canAnimateCrabInformation = !1)), seaInformationContainerArray[e] == skill3ContainerDiv && (makeSeaAnimalsBlinking(turtleEyeArray), 1 == canAnimateTurtleInformation && (animateSeaAnimals(turtleArray), canAnimateTurtleInformation = !1)))
     }
 }
 
@@ -725,7 +725,7 @@ function createBubble() {
 }
 
 function animateBubble() {
-    var e = robbyContainerDiv.offsetTop - (sea1Div.offsetTop - shiftUpLayerHorizontalDistance);
+    var e = alfonsoContainerDiv.offsetTop - (sea1Div.offsetTop - shiftUpLayerHorizontalDistance);
     positionBubble(e), showBubble(), $(bubbleDiv).stop().animate({top: "0px"}, 2 * e, function () {
         hideBubble()
     })
@@ -782,19 +782,19 @@ function setSocialContainerOpacity(e) {
     for (i = 0; i < n; i++) $(socialContainerDiv.children[1].children[i]).fadeTo(0, e)
 }
 
-function happyRobby() {
-    0 == isRobbyHappy && (clearInterval(happyRobbyTimer), happyRobbyTimer = setInterval(function () {
-        robbyHandsUp()
-    }, 3e3), isRobbyHappy = !0)
+function happyAlfonso() {
+    0 == isAlfonsoHappy && (clearInterval(happyAlfonsoTimer), happyAlfonsoTimer = setInterval(function () {
+        alfonsoHandsUp()
+    }, 3e3), isAlfonsoHappy = !0)
 }
 
-function clearHappyRobbyTimer() {
-    1 == isRobbyHappy && (clearInterval(happyRobbyTimer), isRobbyHappy = !1)
+function clearHappyAlfonsoTimer() {
+    1 == isAlfonsoHappy && (clearInterval(happyAlfonsoTimer), isAlfonsoHappy = !1)
 }
 
-function robbyHandsUp() {
-    robbyFramesDiv.style.left = "-1600px", setTimeout(function () {
-        setRobbyStaticFrame()
+function alfonsoHandsUp() {
+    alfonsoFramesDiv.style.left = "-1600px", setTimeout(function () {
+        setAlfonsoStaticFrame()
     }, 1e3)
 }
 
@@ -802,25 +802,25 @@ function positionSplashContainer() {
     splashContainerDiv.style.left = .5 * (containerDiv.offsetWidth - splashContainerDiv.offsetWidth) + "px"
 }
 
-function positionRobbyContainerVertically() {
-    1 == isPreloadShiftUpAnimationFinish && ($(robbyContainerDiv).stop(!0, !1), setRobbyStaticFrame(), 1 == isRobbySwimming ? positionRobbyAtSeaFloorLevel() : (checkElevationNumberBelowRobby(), null != elevationNumberBelowRobby ? robbyContainerDiv.style.bottom = containerDiv.offsetHeight - elevationArray[elevationNumberBelowRobby].offsetTop + "px" : positionRobbyAtGroundLevel()))
+function positionAlfonsoContainerVertically() {
+    1 == isPreloadShiftUpAnimationFinish && ($(alfonsoContainerDiv).stop(!0, !1), setAlfonsoStaticFrame(), 1 == isAlfonsoSwimming ? positionAlfonsoAtSeaFloorLevel() : (checkElevationNumberBelowAlfonso(), null != elevationNumberBelowAlfonso ? alfonsoContainerDiv.style.bottom = containerDiv.offsetHeight - elevationArray[elevationNumberBelowAlfonso].offsetTop + "px" : positionAlfonsoAtGroundLevel()))
 }
 
-function positionRobbyAtGroundLevel() {
-    robbyContainerDiv.style.bottom = .2 * containerDiv.offsetHeight + "px"
+function positionAlfonsoAtGroundLevel() {
+    alfonsoContainerDiv.style.bottom = .2 * containerDiv.offsetHeight + "px"
 }
 
-function positionRobbyAtSeaFloorLevel() {
-    robbyContainerDiv.style.bottom = seaFloorDiv.offsetHeight + "px"
+function positionAlfonsoAtSeaFloorLevel() {
+    alfonsoContainerDiv.style.bottom = seaFloorDiv.offsetHeight + "px"
 }
 
-function checkElevationNumberBelowRobby() {
+function checkElevationNumberBelowAlfonso() {
     for (var e = 0; e < elevationArray.length; e++) {
-        if (pageVerticalPosition < elevationArray[e].offsetLeft + elevationArray[e].offsetWidth - robbyLeftEdge && pageVerticalPosition > elevationArray[e].offsetLeft - robbyRightEdge) {
-            elevationNumberBelowRobby = e;
+        if (pageVerticalPosition < elevationArray[e].offsetLeft + elevationArray[e].offsetWidth - alfonsoLeftEdge && pageVerticalPosition > elevationArray[e].offsetLeft - alfonsoRightEdge) {
+            elevationNumberBelowAlfonso = e;
             break
         }
-        elevationNumberBelowRobby = null
+        elevationNumberBelowAlfonso = null
     }
 }
 
@@ -861,7 +861,7 @@ function fadeOutScrollOrSwipeTextContainer() {
 }
 
 function positionContactConfirmationContainer() {
-    for (var e = 0; e < contactConfirmationContainerArray.length; e++) contactConfirmationContainerArray[e].style.left = "not moving 1" == layersMovement || "not moving 2" == layersMovement ? robbyContainerDiv.offsetLeft + "px" : robbyMaxHorizontalDistance + "px", contactConfirmationContainerArray[e].style.top = .8 * containerDiv.offsetHeight - 370 + "px"
+    for (var e = 0; e < contactConfirmationContainerArray.length; e++) contactConfirmationContainerArray[e].style.left = "not moving 1" == layersMovement || "not moving 2" == layersMovement ? alfonsoContainerDiv.offsetLeft + "px" : alfonsoMaxHorizontalDistance + "px", contactConfirmationContainerArray[e].style.top = .8 * containerDiv.offsetHeight - 370 + "px"
 }
 
 function hideContactConfirmationContainer() {
@@ -939,10 +939,10 @@ function printResizeText() {
 function printScrollSwipeText() {
 }
 
-var blinkRobbyEyesTimer, contentDiv = document.getElementById("content"), pageDiv = document.getElementById("page"),
-    robbyContainerDiv = document.getElementById("robby-container"), robbyDiv = document.getElementById("robby"),
-    robbyFramesDiv = document.getElementById("robby-slides"),
-    robbyEyesCloseDiv = document.getElementById("robby-eyes-close"),
+var blinkAlfonsoEyesTimer, contentDiv = document.getElementById("content"), pageDiv = document.getElementById("page"),
+    alfonsoContainerDiv = document.getElementById("alfonso-container"), alfonsoDiv = document.getElementById("alfonso"),
+    alfonsoFramesDiv = document.getElementById("alfonso-slides"),
+    alfonsoEyesCloseDiv = document.getElementById("alfonso-eyes-close"),
     bannersContainerDiv = document.getElementById("banners-container"), isPreloadShiftUpAnimationFinish = !1,
     canFinishShiftUpHorizontalLayersAfterEverythingLoaded = !0,
     splashContainerDiv = document.getElementById("splash-container"), balloonDiv = document.getElementById("balloon"),
@@ -1019,26 +1019,26 @@ var canAnimateTurtleInformation, skill3ContainerDiv = document.getElementById("s
     turtleArray = new Array, turtleEyeArray = new Array, isTurtleStillAnimating = !1, turtleAnimateNumber = 0,
     numberOfTurtleInEachRowArray = new Array;
 numberOfTurtleInEachRowArray.push(4, 2, 3, 2);
-var isRobbyJumping, isRobbyFalling, swimUpHeight, layersMovement, robbyRightEdge, robbyLeftEdge,
-    robbyMaxHorizontalDistance, canAnimateRobbyRunSwim, robbyStartFrame, robbyStopFrame, shiftRobbyFrameTimer,
-    pageVerticalPositionWhenAnimateRobby1, pageVerticalPositionWhenAnimateRobby2, canAnimateNbaInformation,
+var isAlfonsoJumping, isAlfonsoFalling, swimUpHeight, layersMovement, alfonsoRightEdge, alfonsoLeftEdge,
+    alfonsoMaxHorizontalDistance, canAnimateAlfonsoRunSwim, alfonsoStartFrame, alfonsoStopFrame, shiftAlfonsoFrameTimer,
+    pageVerticalPositionWhenAnimateAlfonso1, pageVerticalPositionWhenAnimateAlfonso2, canAnimateNbaInformation,
     nbaBoardsCounter, nbaBoardsAnimationTimer, nbaPlayerCounter, nbaPlayerTimer, blinkNbaPlayerTimer,
-    canAnimateSocialContainer, happyRobbyTimer, scrollOrSwipeTextContainerTimer, waterfallTimer, drawFireworkTimer,
+    canAnimateSocialContainer, happyAlfonsoTimer, scrollOrSwipeTextContainerTimer, waterfallTimer, drawFireworkTimer,
     fireworkCenterX, fireworkCenterY, fireworkOneRadiusDistance, fireworkOneRotationAngle, drawOneLayerOfFireworkTimer,
     pageVerticalPosition = 0, pageVerticalPositionOnTouch = 0, previousPageVerticalPosition = 0,
-    deltaPageVerticalPosition = 0, isRobbySwimming = !1, isRobbyBelowSeaLevel = !1, elevationArray = new Array,
-    elevationNumberBelowRobby = null, distanceBetweenRobbyAndBalloon = 150, counter = 0, switcher = 1,
-    robbyStaticFrame = 0, robbyStartRunFrame = 1, robbyStopRunFrame = 2, robbyStartSwimFrame = 3,
-    robbyStopSwimFrame = 4, robbySwimDownFrame = 5, robbyStartJumpFrame = 6, robbyStopJumpFrame = 7,
-    robbyOneFrameWidth = 200, shiftRobbyFrameTimeInterval = 200,
-    minimumVerticalDistanceToTriggerRobbySwimDownFrame = 100, nbaBoardArray = new Array,
+    deltaPageVerticalPosition = 0, isAlfonsoSwimming = !1, isAlfonsoBelowSeaLevel = !1, elevationArray = new Array,
+    elevationNumberBelowAlfonso = null, distanceBetweenAlfonsoAndBalloon = 150, counter = 0, switcher = 1,
+    alfonsoStaticFrame = 0, alfonsoStartRunFrame = 1, alfonsoStopRunFrame = 2, alfonsoStartSwimFrame = 3,
+    alfonsoStopSwimFrame = 4, alfonsoSwimDownFrame = 5, alfonsoStartJumpFrame = 6, alfonsoStopJumpFrame = 7,
+    alfonsoOneFrameWidth = 200, shiftAlfonsoFrameTimeInterval = 200,
+    minimumVerticalDistanceToTriggerAlfonsoSwimDownFrame = 100, nbaBoardArray = new Array,
     about3ContainerDiv = document.getElementById("nba-container"), nbaPlayerDiv = document.getElementById("nba-player"),
     nbaPlayerContainerDiv = document.getElementById("nba-player-container"),
     nbaPlayerFrameDiv = document.getElementById("nba-player-frame"),
     nbaRimContainerDiv = document.getElementById("nba-rim-container"), nbaBallDiv = document.getElementById("nba-ball"),
     nbaPlayerEyesDiv = document.getElementById("nba-player-eyes"),
     contactContainerDiv = document.getElementById("contact-container"),
-    socialContainerDiv = document.getElementById("social-container"), isRobbyHappy = !1,
+    socialContainerDiv = document.getElementById("social-container"), isAlfonsoHappy = !1,
     scrollOrSwipeTextContainer1Div = document.getElementById("scroll-or-swipe-text-container-1"),
     scrollOrSwipeTextContainer2Div = document.getElementById("scroll-or-swipe-text-container-2"),
     canHideScrollOrSwipeTextContainer = !0, canAnimateScrollOrSwipeTextContainer = !0,
@@ -1050,16 +1050,16 @@ var isRobbyJumping, isRobbyFalling, swimUpHeight, layersMovement, robbyRightEdge
     fireworksContainerDiv = document.getElementById("fireworks-container"), fireworkArray = new Array,
     fireworkSvgArray = new Array, cArray = new Array, drawFireworkCounter = 0, fireworkRowNumber = 8,
     fireworkColumnNumber = 16, fireworkLayerNumber = 0, fireworkDotRadius = 5, canDrawManyFireworks = !0;
-disableIsRobbyJumpingAndFalling();
+disableIsAlfonsoJumpingAndFalling();
 var landInformationContainerArray = new Array;
 landInformationContainerArray.push(about1ContainerDiv, about2ContainerDiv, about3ContainerDiv, experience1ContainerDiv, experience2ContainerDiv, experience3ContainerDiv);
 var canScrollOrSwipe, seaInformationContainerArray = new Array;
 seaInformationContainerArray.push(skill1ContainerDiv, skill2ContainerDiv, skill3ContainerDiv), setAllNbaCounter(), disableScrollOrSwipe(), $(window).on("beforeunload", function () {
     $(window).scrollTop(0)
 }), window.onload = function () {
-    "computer" != deviceName && initTouchEvents(), storeDivs(), setFrontLayerVerticalHeight(), setBannersContainerVerticalPosition(), shiftUpPreloader(), showContainer(), initVariablesAfterShowContainer(), shiftUpHorizontalLayersAfterEverythingLoaded(), disableAnimateRobbyRunSwim(), resetVariables(), setPageHeight(), setLayerSpeed(), positionVerticalLayersHorizontally(), positionBalloonAndRobbyContainerHorizontally(), positionBalloonVertically(), positionContactContainer(), positionFireworksContainer(), resetFunctions(), positionSplashContainer(), setRobbyLeftAndRightEdge(), positionContactConfirmationContainer(), hideContactConfirmationContainer(), hideRobbyEyesClose(), animateRobbyEyes(), animateWaterfall(), positionSeaFloorObjectsVertically(), openSquidHands(), hideBubble(), setRobotHandsToDefault(), createFireworkSvg(), appendFireworkSvgToContainer()
+    "computer" != deviceName && initTouchEvents(), storeDivs(), setFrontLayerVerticalHeight(), setBannersContainerVerticalPosition(), shiftUpPreloader(), showContainer(), initVariablesAfterShowContainer(), shiftUpHorizontalLayersAfterEverythingLoaded(), disableAnimateAlfonsoRunSwim(), resetVariables(), setPageHeight(), setLayerSpeed(), positionVerticalLayersHorizontally(), positionBalloonAndAlfonsoContainerHorizontally(), positionBalloonVertically(), positionContactContainer(), positionFireworksContainer(), resetFunctions(), positionSplashContainer(), setAlfonsoLeftAndRightEdge(), positionContactConfirmationContainer(), hideContactConfirmationContainer(), hideAlfonsoEyesClose(), animateAlfonsoEyes(), animateWaterfall(), positionSeaFloorObjectsVertically(), openSquidHands(), hideBubble(), setRobotHandsToDefault(), createFireworkSvg(), appendFireworkSvgToContainer()
 }, window.onscroll = function (e) {
     1 == canScrollOrSwipe && (detectPageVerticalPosition(), runTheseFunctionsAfterScrollOrSwipe())
 }, window.onresize = function (e) {
-    setFrontLayerVerticalHeight(), setBannersContainerVerticalPosition(), setPageHeight(), detectPageVerticalPosition(), orientRobby(), setLayerSpeed(), moveLayers(), setRobbyLeftAndRightEdge(), shiftUpDownHorizontalLayersOnResize(), animateInformationAndEnemiesElements(), positionSplashContainer(), positionRobbyContainerVertically(), positionBalloonVertically(), positionSocialContainer(), positionPlants(), hideContactConfirmationContainer(), positionContactConfirmationContainer(), positionExperienceTextContainer(), positionChainBlockAndStringContainer(), positionSeaFloorObjectsVertically(), enableScrollOrSwipe(), printResizeText()
+    setFrontLayerVerticalHeight(), setBannersContainerVerticalPosition(), setPageHeight(), detectPageVerticalPosition(), orientAlfonso(), setLayerSpeed(), moveLayers(), setAlfonsoLeftAndRightEdge(), shiftUpDownHorizontalLayersOnResize(), animateInformationAndEnemiesElements(), positionSplashContainer(), positionAlfonsoContainerVertically(), positionBalloonVertically(), positionSocialContainer(), positionPlants(), hideContactConfirmationContainer(), positionContactConfirmationContainer(), positionExperienceTextContainer(), positionChainBlockAndStringContainer(), positionSeaFloorObjectsVertically(), enableScrollOrSwipe(), printResizeText()
 }, $(window).on("orientationchange", orientationChangeHandler);
